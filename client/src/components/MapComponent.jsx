@@ -26,7 +26,7 @@ const MapComponent = () => {
   const [angle, setAngle] = useState(0);
 
   // Bus icon with rotation capability
-  const busIconUrl = "../../public/busIcon.png";
+  const busIconUrl = "/busIcon.png";
   const busIcon = new L.Icon({
     iconUrl: busIconUrl,
     iconSize: [56, 56],
@@ -96,17 +96,19 @@ const MapComponent = () => {
   };
 
   return (
-    <div style={{ height: "440px", width: "74%" }}>
+    <div style={{ height: "480px", width: "100%" }}>
       <MapContainer
         center={locations.bangalore}
         zoom={10}
         scrollWheelZoom={true}
         style={{ height: "100%", width: "100%" }}
+        zoomControl={false} // Disable zoom controls
+        attributionControl={false} // Disable attribution box
       >
-        {/* Dark theme TileLayer with buildings and roads visible */}
+        {/* High-contrast light theme TileLayer */}
         <TileLayer
-          url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-          attribution='&copy; <a href="https://carto.com/attribution">CARTO</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         />
 
         {/* Routing machine with stops */}
