@@ -22,7 +22,7 @@
         "address": "Kiran Provision, Chikkamagaluru, Karnataka, 577101, India"
     },
     {
-        "name": "Ramesh - Home",
+        "name": "Nita - Home",
         "coordinates": {
             "type": "Point",
             "coordinates": [
@@ -33,7 +33,7 @@
         "address": "Brigade Serenity, Chikkamagaluru, Karnataka, 577101, India"
     },
     {
-        "name": "Priya - Home",
+        "name": "Rajesh - Home",
         "coordinates": {
             "type": "Point",
             "coordinates": [
@@ -44,7 +44,7 @@
         "address": "Canara Bank, Chikkamagaluru, Karnataka, 577101, India"
     },
     {
-        "name": "Sita - Home",
+        "name": "Amit - Home",
         "coordinates": {
             "type": "Point",
             "coordinates": [
@@ -55,7 +55,7 @@
         "address": "Naidu Kalyan Mantap, Chikkamagaluru, Karnataka, 577101, India"
     },
     {
-        "name": "Manoj - Home",
+        "name": "Anjali - Home",
         "coordinates": {
             "type": "Point",
             "coordinates": [
@@ -66,7 +66,7 @@
         "address": "Active Fitness, Chikkamagaluru, Karnataka, 577101, India"
     },
     {
-        "name": "Arun - Home",
+        "name": "Suresh - Home",
         "coordinates": {
             "type": "Point",
             "coordinates": [
@@ -77,7 +77,7 @@
         "address": "Hotel Prashanth, Chikkamagaluru, Karnataka, 577101, India"
     },
     {
-        "name": "Rohini - Home",
+        "name": "Deepa - Home",
         "coordinates": {
             "type": "Point",
             "coordinates": [
@@ -88,7 +88,7 @@
         "address": "IDSG Government College, Chikkamagaluru, Karnataka, 577101, India"
     },
     {
-        "name": "Kavitha - Home",
+        "name": "Sneha - Home",
         "coordinates": {
             "type": "Point",
             "coordinates": [
@@ -99,7 +99,7 @@
         "address": "Vishal Mega Mart, Chikkamagaluru, Karnataka, 577101, India"
     },
     {
-        "name": "Kumar - Home",
+        "name": "Priya - Home",
         "coordinates": {
             "type": "Point",
             "coordinates": [
@@ -110,14 +110,14 @@
         "address": "Rainbow Lodge, Chikkamagaluru, Karnataka, 577101, India"
     },
     {
-        "name": "Vijay - Home",
+        "name": "Rahul - Home",
         "coordinates": {
             "type": "Point",
             "coordinates": [
-                75.7912103,
-                13.3406827
+                75.7768717186906,
+                13.326947441180058
             ]
         },
-        "address": "Ruchi Photography, Chikkamagaluru, Karnataka, 577101, India"
+        "address": "KM road , Jyothinagar,Chikkamagaluru, Karnataka, 577101, India"
     }
 ]

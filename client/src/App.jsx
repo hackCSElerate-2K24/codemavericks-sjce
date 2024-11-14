@@ -1,4 +1,3 @@
-// src/App.js
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./context/auth";
 import Login from "./pages/Login";
@@ -29,8 +28,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
-    </AuthProvider>
-  );
+    </AuthProvider>);
 }
 
 export default App;
