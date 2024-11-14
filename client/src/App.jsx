@@ -1,9 +1,12 @@
-import DriverDesktop from "./components/Driver/DriverDesktop";
+// import DriverDesktop from "./components/Driver/DriverDesktop";
+
+import AdminDashboard from "./components/Admin/AdminDashboard";
 
 function App() {
   return (
     <div className="">
-      <DriverDesktop />
+      {/* <DriverDesktop /> */}
+      <AdminDashboard/>
     </div>
   );
 }
