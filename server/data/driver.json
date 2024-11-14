@@ -1,38 +1,38 @@
 [
-    {
-        "name": "Rajesh Kumar",
-        "licenseNumber": "DL123456789",
-        "email": "rajesh.kumar@gmail.com",
-        "phone": "+919876543210",
-        "assignedBus": "AIT_B1",
-        "availabilityStatus": "Available",
-        "currentLocation": {
-            "latitude": 13.342393143301894,
-            "longitude": 75.7982477509578
-        }
+  {
+    "name": "Rajesh Kumar",
+    "licenseNumber": "DL123456789",
+    "email": "rajesh.kumar@gmail.com",
+    "phone": "+919876543210",
+    "availabilityStatus": "Available",
+    "currentLocation": {
+      "latitude": 13.342393143301894,
+      "longitude": 75.7982477509578
     },
-    {
-        "name": "Suresh Reddy",
-        "licenseNumber": "DL987654321",
-        "email": "suresh.reddy@gmail.com",
-        "phone": "+919812345678",
-        "assignedBus": "AIT_B2",
-        "availabilityStatus": "Available",
-        "currentLocation": {
-            "latitude": 13.342393143301894,
-            "longitude": 75.7982477509578
-        }
+    "password": "codemavericks"
+  },
+  {
+    "name": "Suresh Reddy",
+    "licenseNumber": "DL987654321",
+    "email": "suresh.reddy@gmail.com",
+    "phone": "+919812345678",
+    "availabilityStatus": "Available",
+    "currentLocation": {
+      "latitude": 13.342393143301894,
+      "longitude": 75.7982477509578
     },
-    {
-        "name": "Amit Sharma",
-        "licenseNumber": "DL192837465",
-        "email": "amit.sharma@gmail.com",
-        "phone": "+919823456789",
-        "assignedBus": "AIT_B3",
-        "availabilityStatus": "Available",
-        "currentLocation": {
-            "latitude": 13.342393143301894,
-            "longitude": 75.7982477509578
-        }
-    }
+    "password": "codemavericks"
+  },
+  {
+    "name": "Amit Sharma",
+    "licenseNumber": "DL192837465",
+    "email": "amit.sharma@gmail.com",
+    "phone": "+919823456789",
+    "availabilityStatus": "Available",
+    "currentLocation": {
+      "latitude": 13.342393143301894,
+      "longitude": 75.7982477509578
+    },
+    "password": "codemavericks"
+  }
 ]

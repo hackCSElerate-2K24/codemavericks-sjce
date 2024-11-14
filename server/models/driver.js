@@ -19,14 +19,14 @@ const driverSchema = new mongoose.Schema({
     type: String,
     required: [true, "Driver phone number is required"],
   },
-  assignedBus: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Bus",
-  },
   availabilityStatus: {
     type: String,
     enum: ["Available", "On Route", "Unavailable"],
     default: "Available",
+  },
+  password: {
+    type: String,
+    required: [true, "Password is required"],
   },
   currentLocation: {
     latitude: {
@@ -38,6 +38,13 @@ const driverSchema = new mongoose.Schema({
       required: true,
     },
   },
+});
+
+driverSchema.pre("save", async function (next) {
+  if (this.isModified("password")) {
+    this.password = await bcrypt.hash(this.password, 10);
+  }
+  next();
 });
 
 module.exports = mongoose.model("Driver", driverSchema);

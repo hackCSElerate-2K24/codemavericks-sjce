@@ -14,6 +14,10 @@ const parentSchema = new mongoose.Schema({
     type: String,
     required: [true, "Phone number is required"],
   },
+  password: {
+    type: String,
+    required: [true, "Password is required"],
+  },
   location: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Location", // Reference to the Location model
@@ -26,6 +30,14 @@ const parentSchema = new mongoose.Schema({
       required: [true, "Parent must atleast have a child"],
     },
   ],
+});
+
+parentSchema.pre("save", async function (next) {
+  if (this.isModified("password")) {
+    // Only hash if the password has changed
+    this.password = await bcrypt.hash(this.password, 10);
+  }
+  next();
 });
 
 module.exports = mongoose.model("Parent", parentSchema);

@@ -1,72 +1,82 @@
 [
-    {
-        "name": "Sunil Sharma",
-        "email": "sunil.sharma@gmail.com",
-        "phone": "+919876543210",
-        "location": "Sunil - Home",
-        "children": ["Aryan Sharma", "Ishita Sharma"]
-    },
-    {
-        "name": "Nita Verma",
-        "email": "nita.verma@gmail.com",
-        "phone": "+919812345678",
-        "location": "Nita - Home",
-        "children": ["Anaya Verma", "Kabir Verma"]
-    },
-    {
-        "name": "Rajesh Reddy",
-        "email": "rajesh.reddy@gmail.com",
-        "phone": "+919823456789",
-        "location": "Rajesh - Home",
-        "children": ["Ravi Reddy", "Riya Reddy"]
-    },
-    {
-        "name": "Amit Bhatia",
-        "email": "amit.bhatia@gmail.com",
-        "phone": "+919823098765",
-        "location": "Amit - Home",
-        "children": ["Vihaan Bhatia", "Yash Bhatia"]
-    },
-    {
-        "name": "Anjali Mehta",
-        "email": "anjali.mehta@gmail.com",
-        "phone": "+919865432198",
-        "location": "Anjali - Home",
-        "children": ["Rohan Mehta", "Tanya Mehta", "Maya Mehta"]
-    },
-    {
-        "name": "Suresh Patel",
-        "email": "suresh.patel@gmail.com",
-        "phone": "+919887654321",
-        "location": "Suresh - Home",
-        "children": ["Sia Patel", "Mahesh Patel", "Devesh Patel"]
-    },
-    {
-        "name": "Deepa Yadav",
-        "email": "deepa.khan@gmail.com",
-        "phone": "+919912345678",
-        "location": "Deepa - Home",
-        "children": ["Kabir Yadav", "Ravi Yadav", "Krishna Yadav"]
-    },
-    {
-        "name": "Sneha Joshi",
-        "email": "sneha.joshi@gmail.com",
-        "phone": "+919834563210",
-        "location": "Sneha - Home",
-        "children": ["Ayaan Joshi"]
-    },
-    {
-        "name": "Priya Gupta",
-        "email": "priya.gupta@gmail.com",
-        "phone": "+919856734123",
-        "location": "Priya - Home",
-        "children": ["Neha Gupta"]
-    },
-    {
-        "name": "Rahul Singh",
-        "email": "rahul.singh@gmail.com",
-        "phone": "+919830763529",
-        "location": "Rahul - Home",
-        "children": ["Ravi Singh"]
-    }
+  {
+    "name": "Sunil Sharma",
+    "email": "sunil.sharma@gmail.com",
+    "phone": "+919876543210",
+    "location": "Sunil - Home",
+    "children": ["Aryan Sharma", "Ishita Sharma"],
+    "password": "codemavericks"
+  },
+  {
+    "name": "Nita Verma",
+    "email": "nita.verma@gmail.com",
+    "phone": "+919812345678",
+    "location": "Nita - Home",
+    "children": ["Anaya Verma", "Kabir Verma"],
+    "password": "codemavericks"
+  },
+  {
+    "name": "Rajesh Reddy",
+    "email": "rajesh.reddy@gmail.com",
+    "phone": "+919823456789",
+    "location": "Rajesh - Home",
+    "children": ["Ravi Reddy", "Riya Reddy"],
+    "password": "codemavericks"
+  },
+  {
+    "name": "Amit Bhatia",
+    "email": "amit.bhatia@gmail.com",
+    "phone": "+919823098765",
+    "location": "Amit - Home",
+    "children": ["Vihaan Bhatia", "Yash Bhatia"],
+    "password": "codemavericks"
+  },
+  {
+    "name": "Anjali Mehta",
+    "email": "anjali.mehta@gmail.com",
+    "phone": "+919865432198",
+    "location": "Anjali - Home",
+    "children": ["Rohan Mehta", "Tanya Mehta", "Maya Mehta"],
+    "password": "codemavericks"
+  },
+  {
+    "name": "Suresh Patel",
+    "email": "suresh.patel@gmail.com",
+    "phone": "+919887654321",
+    "location": "Suresh - Home",
+    "children": ["Sia Patel", "Mahesh Patel", "Devesh Patel"],
+    "password": "codemavericks"
+  },
+  {
+    "name": "Deepa Yadav",
+    "email": "deepa.khan@gmail.com",
+    "phone": "+919912345678",
+    "location": "Deepa - Home",
+    "children": ["Kabir Yadav", "Ravi Yadav", "Krishna Yadav"],
+    "password": "codemavericks"
+  },
+  {
+    "name": "Sneha Joshi",
+    "email": "sneha.joshi@gmail.com",
+    "phone": "+919834563210",
+    "location": "Sneha - Home",
+    "children": ["Ayaan Joshi"],
+    "password": "codemavericks"
+  },
+  {
+    "name": "Priya Gupta",
+    "email": "priya.gupta@gmail.com",
+    "phone": "+919856734123",
+    "location": "Priya - Home",
+    "children": ["Neha Gupta"],
+    "password": "codemavericks"
+  },
+  {
+    "name": "Rahul Singh",
+    "email": "rahul.singh@gmail.com",
+    "phone": "+919830763529",
+    "location": "Rahul - Home",
+    "children": ["Ravi Singh"],
+    "password": "codemavericks"
+  }
 ]

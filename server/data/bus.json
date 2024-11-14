@@ -1,20 +1,20 @@
 [
-    {
-        "busNumberPlate": "KA01AB1234",
-        "routeNo": "AIT_B1",
-        "driverId": "Rajesh Kumar",
-        "capacity": 50
-    },
-    {
-        "busNumberPlate": "KA02CD5678",
-        "routeNo": "AIT_B2",
-        "driverId": "Suresh Reddy",
-        "capacity": 45
-    },
-    {
-        "busNumberPlate": "KA03EF9012",
-        "routeNo": "AIT_B3",
-        "driverId": "Amit Sharma",
-        "capacity": 60
-    }
+  {
+    "busNumberPlate": "KA01AB1234",
+    "routeNo": "AIT_B1",
+    "driverId": "Rajesh Kumar",
+    "capacity": 50
+  },
+  {
+    "busNumberPlate": "KA02CD5678",
+    "routeNo": "AIT_B2",
+    "driverId": "Suresh Reddy",
+    "capacity": 45
+  },
+  {
+    "busNumberPlate": "KA03EF9012",
+    "routeNo": "AIT_B3",
+    "driverId": "Amit Sharma",
+    "capacity": 60
+  }
 ]
