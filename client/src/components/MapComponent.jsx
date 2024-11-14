@@ -96,7 +96,7 @@ const MapComponent = () => {
   };
 
   return (
-    <div style={{ height: "480px", width: "100%" }}>
+    <div style={{ height: "480px", width: "100%" }} className="map-container">
       <MapContainer
         center={locations.bangalore}
         zoom={10}

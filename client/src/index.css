@@ -22,3 +22,20 @@
 .scrollbar-custom::-webkit-scrollbar-thumb:hover {
   background-color: #2b6cb0; /* Change color when hovering */
 }
+
+/* MapComponent.css */
+
+.map-container {
+  width: 100%; /* Full width for the container */
+  height: 480px; /* Default height for desktop screens */
+
+  /* Tablet screen size */
+  @media (max-width: 768px) {
+    height: 400px;
+  }
+
+  /* Mobile screen size */
+  @media (max-width: 480px) {
+    height: 300px;
+  }
+}

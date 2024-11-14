@@ -1,39 +1,14 @@
+/* eslint-disable no-unused-vars */
+import { IoMdCheckmarkCircle } from "react-icons/io";
 import MapComponent from "../MapComponent";
 import { useState } from "react";
-
-function DriverMobile() {
+function d() {
   const [isStudentListOpen, setIsStudentListOpen] = useState(false);
 
   const toggleStudentList = () => setIsStudentListOpen(!isStudentListOpen);
   const closeStudentList = () => setIsStudentListOpen(false);
-
   return (
-    <div className="flex flex-col bg-[#141414] text-white relative h-screen overflow-hidden">
-      {/* Map Component (Full Height) */}
-      <div className="h-full relative z-0">
-        <MapComponent />
-      </div>
-
-      {/* Floating Header with Trip Details */}
-      <div className="fixed top-4 left-6 right-6 bg-[#141414] flex items-center justify-evenly w-fit gap-8 p-3 rounded-xl shadow-lg z-20">
-        <div className="flex items-center gap-4">
-          <img src="/Driver/zoom.png" className="h-12 w-12" alt="Zoom Icon" />
-        </div>
-        <div className="flex flex-col items-center justify-center gap-1">
-          <h1 className="text-3xl font-bold text-[#35E856]">24 min</h1>
-          <p className="text-lg font-medium">25 kms • 4:55 pm</p>
-        </div>
-      </div>
-
-      {/* Toggle Button to Open Student List */}
-      <button
-        onClick={toggleStudentList}
-        className="fixed bottom-16 w-full  bg-blue-600 p-3 rounded-full shadow-lg z-10 hover:bg-blue-700 transition-all"
-      >
-        {isStudentListOpen ? "Close List" : "Open List"}
-      </button>
-
-      {/* Slide-Up Drawer for Student List */}
+    <div>
       <div
         className={`fixed bottom-0 left-0 right-0 bg-[#141414] p-4 rounded-t-3xl shadow-lg transition-transform duration-300 z-20 ${
           isStudentListOpen ? "translate-y-0" : "translate-y-full"
@@ -76,8 +51,29 @@ function DriverMobile() {
           ))}
         </div>
       </div>
+      <MapComponent />
+      <div className="fixed top-4 left-6 right-6 bg-[#141414] flex items-center justify-between p-3 rounded-xl shadow-lg z-20">
+        <div className="flex items-center gap-4">
+          <img src="/Driver/zoom.png" className="h-12 w-12" alt="Zoom Icon" />
+        </div>
+        <div className="flex flex-col items-center justify-center gap-1">
+          <h1 className="text-3xl font-bold text-[#35E856]">24 min</h1>
+          <p className="text-lg font-medium">25 kms • 4:55 pm</p>
+        </div>
+        <div className="flex flex-col items-center justify-center bg-[#35E85610] px-4 py-2 rounded-xl text-xl">
+          <IoMdCheckmarkCircle fill="white" size={32} />
+          <p className="text-base">Dropped</p>
+        </div>
+      </div>
+
+      <button
+        onClick={toggleStudentList}
+        className="fixed bottom-20 right-6 bg-blue-600 p-3 rounded-full shadow-lg z-10 hover:bg-blue-700 transition-all"
+      >
+        {isStudentListOpen ? "Close List" : "Open List"}
+      </button>
     </div>
   );
 }
 
-export default DriverMobile;
+export default d;
