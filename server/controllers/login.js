@@ -1,68 +1,46 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-const Admin = require("./models/Admin");
-const Driver = require("./models/Driver");
-const Parent = require("./models/Parent");
-
-const JWT_SECRET = "your_secret_key"; // Replace with a strong secret key
+const Admin = require("../models/admin");
+const Driver = require("../models/driver");
+const Parent = require("../models/parent");
 
 const generateToken = (id, role) => {
-  return jwt.sign({ id, role }, JWT_SECRET, { expiresIn: "1d" });
+  return jwt.sign({ id, role }, process.env.JWT_SECRET, { expiresIn: "1d" });
 };
 
-const login = async (req, res) => {
-  const { role, email, password, studentId, busId } = req.body;
+module.exports = async (req, res) => {
+  const { role, email, password } = req.body;
 
   try {
     let user;
     switch (role) {
       case "Admin":
         user = await Admin.findOne({ email });
-        if (user && bcrypt.compareSync(password, user.password)) {
-          const token = generateToken(user._id, role);
-          res.cookie("token", token, {
-            httpOnly: true,
-            secure: true,
-            maxAge: 24 * 60 * 60 * 1000,
-          });
-          return res
-            .status(200)
-            .json({ message: "Admin authenticated", role, user });
-        }
         break;
 
       case "Parent":
-        user = await Parent.findOne({ email, children: studentId });
-        if (user && bcrypt.compareSync(password, user.password)) {
-          const token = generateToken(user._id, role);
-          res.cookie("token", token, {
-            httpOnly: true,
-            secure: true,
-            maxAge: 24 * 60 * 60 * 1000,
-          });
-          return res
-            .status(200)
-            .json({ message: "Parent authenticated", role, user });
-        }
+        user = await Parent.findOne({ email });
         break;
 
       case "Driver":
-        user = await Driver.findOne({ email, assignedBus: busId });
-        if (user && bcrypt.compareSync(password, user.password)) {
-          const token = generateToken(user._id, role);
-          res.cookie("token", token, {
-            httpOnly: true,
-            secure: true,
-            maxAge: 24 * 60 * 60 * 1000,
-          });
-          return res
-            .status(200)
-            .json({ message: "Driver authenticated", role, user });
-        }
+        user = await Driver.findOne({ email });
         break;
 
       default:
         return res.status(400).json({ message: "Invalid role specified" });
+    }
+
+    // Check if user exists and if the password is correct
+    if (user && bcrypt.compareSync(password, user.password)) {
+      const token = generateToken(user._id, role);
+      res.cookie("jwt", token, {
+        httpOnly: true,
+        secure: false,
+        maxAge: 24 * 60 * 60 * 1000, // 1 day
+      });
+      return res
+        .status(200)
+        .json({ message: `${role} authenticated`, role, user });
     }
 
     return res.status(401).json({ message: "Invalid credentials" });

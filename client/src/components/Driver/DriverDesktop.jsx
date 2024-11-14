@@ -5,10 +5,12 @@ function DriverDesktop() {
   return (
     <div className="min-h-screen bg-black">
       <div className="flex justify-between p-2">
-        <h1 className="text-white text-xl font-bold tracking-wide">TrackIn Dash Board(driver)</h1>
+        <h1 className="text-white text-xl font-bold tracking-wide">
+          TrackIn Dash Board(driver)
+        </h1>
         <div className="flex items-center justify-center">
           <button className="flex bg-[#2F2E41] py-2 px-6 items-center justify-center gap-2 font-medium text-white rounded-xl">
-            My profile <img src="/Driver/driver.png"/>
+            My profile <img src="/Driver/driver.png" />
           </button>
         </div>
       </div>
@@ -146,6 +148,6 @@ function DriverDesktop() {
       </div>
     </div>
   );
-
+}
 
 export default DriverDesktop;
