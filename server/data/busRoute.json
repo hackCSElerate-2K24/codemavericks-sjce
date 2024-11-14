@@ -1,7 +1,7 @@
 {
     "routes": [
       {
-        "routeName": "Route A",
+        "routeNo": "AIT_B1",
         "description": "Route A travels from AIT College to Sunil's Home, Nita's Home, and Rajesh's Home.",
         "stops": [
           "AIT College",
@@ -11,7 +11,7 @@
         ]
       },
       {
-        "routeName": "Route B",
+        "routeNo": "AIT_B2",
         "description": "Route B travels from AIT College to Amit's Home, Anjali's Home, and Suresh's Home.",
         "stops": [
           "AIT College",
@@ -21,7 +21,7 @@
         ]
       },
       {
-        "routeName": "Route C",
+        "routeNo": "AIT_B3",
         "description": "Route C travels from AIT College to Deepa's Home, Sneha's Home, Priya's Home, and Rahul's Home.",
         "stops": [
           "AIT College",
