@@ -16,17 +16,5 @@
         "routeNo": "AIT_B3",
         "driverId": "Amit Sharma",
         "capacity": 60
-    },
-    {
-        "busNumberPlate": "KA04GH3456",
-        "routeNo": "AIT_B4",
-        "driverId": "Karan Singh",
-        "capacity": 55
-    },
-    {
-        "busNumberPlate": "KA05IJ7890",
-        "routeNo": "AIT_B5",
-        "driverId": "Mahesh Joshi",
-        "capacity": 50
     }
 ]
