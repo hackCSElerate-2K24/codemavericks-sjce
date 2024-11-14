@@ -10,8 +10,8 @@ import DriverDesktop from "../components/Driver/DriverDesktop";
 function App() {
   const isDesktop = useMediaQuery({ minWidth: 1024 });
   return (
-    <AuthProvider>
-      <Router>
+    <Router>
+      <AuthProvider>
         <Routes>
           <Route path="/" element={<Login />} />
 
@@ -43,8 +43,8 @@ function App() {
           {/* Redirect unknown routes to login */}
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
-      </Router>
-    </AuthProvider>
+      </AuthProvider>
+    </Router>
   );
 }
 
