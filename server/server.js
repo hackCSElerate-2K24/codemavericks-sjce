@@ -4,6 +4,7 @@ const http = require("http");
 const { Server } = require("socket.io");
 const mongoose = require("mongoose");
 require("dotenv").config();
+const dataRoutes = require('./routes/data');
 
 const app = express();
 const server = http.createServer(app);
@@ -34,6 +35,8 @@ connectDB();
 app.get("/", (req, res) => {
   res.send("Server is running! Hello from Code Mavericks");
 });
+
+app.use("/getData", dataRoutes);
 
 io.on("connection", (socket) => {
   console.log("a user connected:", socket.id);
