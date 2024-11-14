@@ -1,5 +1,5 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import { AuthProvider,  ProtectedRoute } from "./context/auth";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { AuthProvider } from "./context/auth";
 import Login from "./pages/Login";
 import { useMediaQuery } from "react-responsive";
 import Admin from "../components/Admin";
@@ -14,12 +14,12 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Login />} />
-          
+
           <Route
             path="/admin"
             element={
               <ProtectedRoute allowedRoles={["admin"]}>
-    {isDesktop ? <Admin /> : <h1>Only on Desktop please</h1>}
+                {isDesktop ? <Admin /> : <h1>Only on Desktop please</h1>}
               </ProtectedRoute>
             }
           />
@@ -27,7 +27,7 @@ function App() {
             path="/driver"
             element={
               <ProtectedRoute allowedRoles={["driver"]}>
-    return isDesktop ? <DriverDesktop /> : <DriverMobile />;
+                return isDesktop ? <DriverDesktop /> : <DriverMobile />;
               </ProtectedRoute>
             }
           />
@@ -35,7 +35,7 @@ function App() {
             path="/parent"
             element={
               <ProtectedRoute allowedRoles={["parent"]}>
-    {isDesktop ? <Parent /> : <h1>Only on Desktop please</h1>}
+                {isDesktop ? <Parent /> : <h1>Only on Desktop please</h1>}
               </ProtectedRoute>
             }
           />

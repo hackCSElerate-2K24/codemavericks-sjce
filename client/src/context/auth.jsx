@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import { createContext, useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -6,7 +8,7 @@ const AuthContext = createContext();
 
 // AuthProvider will provide the authentication state to the app
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState({ role: "admin" }); // Holds user information
+  const [user, setUser] = useState({ role: "parent" }); // Holds user information
   const [loading, setLoading] = useState(false); // Track loading state
 
   // Dummy function for login
