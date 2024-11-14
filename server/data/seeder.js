@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs");
 const Admin = require("../models/admin");
 const Bus = require("../models/bus");
 const Driver = require("../models/driver");
-const Location = require("../models/location");
+// const Location = require("../models/location");
 const Parent = require("../models/parent");
 const Student = require("../models/student");
 
