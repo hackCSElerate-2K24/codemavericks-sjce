@@ -8,7 +8,7 @@ const {
     getLocation,
     getParent,
     getStudent
-} = require('../controllers/dataController');
+} = require('../controllers/data');
 
 // Define the routes under /getData
 router.get('/admin', getAdmin);
