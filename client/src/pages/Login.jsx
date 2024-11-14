@@ -1,9 +1,13 @@
+// Login.jsx
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/auth"; // Adjust the path if needed
+import axios from "axios";
 import toast from "react-hot-toast";
 
 function Login() {
-  const { login } = useAuth();
+  const { setUser } = useAuth(); // Access setUser to set the logged-in user
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [selectedRole, setSelectedRole] = useState("Parent"); // Default to "Parent"
@@ -14,11 +18,23 @@ function Login() {
     setLoading(true);
 
     try {
-      // Attempt login with email, password, and selected role
-      await login(email, password, selectedRole);
+      // Send login request to the server
+      const response = await axios.post(
+        `${import.meta.env.VITE_APP_BACKEND_URL}/api/v1/login`,
+        { email, password, role: selectedRole },
+        { withCredentials: true }
+      );
+
+      const { user: userData, role } = response.data;
+      setUser({ ...userData, role }); // Set the user in AuthContext
+
+      console.log(role);
+
+      toast.success(`Welcome back, ${userData?.name || userData.college}!`);
+      navigate(`/${role.toLowerCase()}`);
     } catch (error) {
+      console.error("Login failed:", error);
       toast.error("Invalid credentials, please try again.");
-      console.error("Login error:", error);
     } finally {
       setLoading(false);
     }
@@ -78,10 +94,14 @@ function Login() {
 
           <button
             type="submit"
-            className="w-32 ml-auto py-2 font-bold text-white bg-[#d32f2f] rounded-lg hover:bg-blue-600"
+            className="w-32 ml-auto py-2 font-bold text-white bg-[#d32f2f] rounded-lg"
             disabled={loading}
           >
-            {loading ? "Logging in..." : "Login"}
+            {loading ? (
+              <span className="spinner-border animate-spin border-2 border-white rounded-full h-5 w-5"></span>
+            ) : (
+              "Login"
+            )}
           </button>
         </form>
       </div>

@@ -1,32 +1,52 @@
-
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { AuthProvider } from "./context/auth";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
+import { AuthProvider, ProtectedRoute } from "./context/auth";
 import Login from "./pages/Login";
-import Dashboard from "./pages/Dashboard";
-import { ProtectedRoute } from "./context/auth";
-
-const NotFound = () => <h1>404 - Page Not Found</h1>;
+import { useMediaQuery } from "react-responsive";
+import Admin from "./components/Admin/Admin";
+import Parent from "./components/Parent/Parent";
+import DriverMobile from "./components/Driver/DriverMobile";
+import DriverDesktop from "./components/Driver/DriverDesktop";
 
 function App() {
+  const isDesktop = useMediaQuery({ minWidth: 1024 });
   return (
     <Router>
       <AuthProvider>
         <Routes>
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Login />} />
 
           <Route
-            path="/dashboard"
+            path="/admin"
             element={
-              <ProtectedRoute allowedRoles={["Driver", "Admin", "Parent"]}>
-                <Dashboard />
+              <ProtectedRoute allowedRoles={["Admin"]}>
+                {isDesktop ? <Admin /> : <h1>Only on Desktop please</h1>}
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/driver"
+            element={
+              <ProtectedRoute allowedRoles={["Driver"]}>
+                {isDesktop ? <DriverDesktop /> : <DriverMobile />}
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/parent"
+            element={
+              <ProtectedRoute allowedRoles={["Parent"]}>
+                {isDesktop ? <Parent /> : <h1>Only on Desktop please</h1>}
               </ProtectedRoute>
             }
           />
 
-          <Route exact path="/" element={<h1>Welcome to the App</h1>} />
-
-          {/* 404 Fallback Route */}
-          <Route path="*" element={<NotFound />} />
+          {/* Redirect unknown routes to login */}
+          {/* <Route path="*" element={<Navigate to="/" />} /> */}
         </Routes>
       </AuthProvider>
     </Router>
