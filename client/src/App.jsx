@@ -1,5 +1,11 @@
+import DriverDesktop from "./components/Driver/DriverDesktop";
+
 function App() {
-  return <div className="bg-red-500">hello world</div>;
+  return (
+    <div className="">
+      <DriverDesktop />
+    </div>
+  );
 }
 
 export default App;
