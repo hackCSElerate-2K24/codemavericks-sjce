@@ -3,25 +3,26 @@ const express = require("express");
 const http = require("http");
 const { Server } = require("socket.io");
 const mongoose = require("mongoose");
+const cors = require("cors");
+const login = require("./controllers/login");
 require("dotenv").config();
 const dataRoutes = require('./routes/data');
 
 const app = express();
+app.use(express.json());
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
 const server = http.createServer(app);
-const io = new Server(server, {
-  cors: {
-    origin: "http://localhost:5173", // Replace with Vite frontend URL
-    methods: ["GET", "POST"],
-  },
-});
+const io = new Server(server);
 
 // MongoDB connection
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(process.env.MONGODB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    const conn = await mongoose.connect(process.env.MONGODB_URI);
     console.log(`MongoDB connected: ${conn.connection.host}`);
   } catch (err) {
     console.error("Error connecting to MongoDB:", err);
@@ -36,7 +37,8 @@ app.get("/", (req, res) => {
   res.send("Server is running! Hello from Code Mavericks");
 });
 
-app.use("/getData", dataRoutes);
+app.use("/api/v1/getData", dataRoutes);
+app.use("/api/v1/login", login);
 
 io.on("connection", (socket) => {
   console.log("a user connected:", socket.id);

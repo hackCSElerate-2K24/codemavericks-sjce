@@ -1,3 +1,4 @@
+
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./context/auth";
 import Login from "./pages/Login";
@@ -8,15 +9,15 @@ const NotFound = () => <h1>404 - Page Not Found</h1>;
 
 function App() {
   return (
-    <AuthProvider>
-      <Router>
+    <Router>
+      <AuthProvider>
         <Routes>
           <Route path="/login" element={<Login />} />
 
           <Route
             path="/dashboard"
             element={
-              <ProtectedRoute allowedRoles={["driver", "admin", "parent"]}>
+              <ProtectedRoute allowedRoles={["Driver", "Admin", "Parent"]}>
                 <Dashboard />
               </ProtectedRoute>
             }
@@ -27,8 +28,9 @@ function App() {
           {/* 404 Fallback Route */}
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </Router>
-    </AuthProvider>);
+      </AuthProvider>
+    </Router>
+  );
 }
 
 export default App;
