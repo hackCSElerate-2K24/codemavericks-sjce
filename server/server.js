@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const login = require("./controllers/login");
 require("dotenv").config();
+const dataRoutes = require('./routes/data');
 
 const app = express();
 app.use(express.json());
@@ -36,6 +37,7 @@ app.get("/", (req, res) => {
   res.send("Server is running! Hello from Code Mavericks");
 });
 
+app.use("/api/v1/getData", dataRoutes);
 app.use("/api/v1/login", login);
 
 io.on("connection", (socket) => {
