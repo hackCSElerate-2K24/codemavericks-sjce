@@ -3,7 +3,7 @@ import React from "react";
 import { useAuth } from "../context/auth";
 import { useMediaQuery } from "react-responsive";
 import Admin from "../components/Admin/Admin";
-import Parent from "../components/Parent";
+import Parent from "../components/Parent/Parent";
 import DriverMobile from "../components/Driver/DriverMobile";
 import DriverDesktop from "../components/Driver/DriverDesktop";
 
