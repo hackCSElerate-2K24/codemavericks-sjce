@@ -1,0 +1,62 @@
+[
+    {
+        "name": "Rajesh Kumar",
+        "licenseNumber": "DL123456789",
+        "email": "rajesh.kumar@gmail.com",
+        "phone": "+919876543210",
+        "assignedBus": "AIT_B1",
+        "availabilityStatus": "Available",
+        "currentLocation": {
+            "latitude": 13.34456,
+            "longitude": 75.78932
+        }
+    },
+    {
+        "name": "Suresh Reddy",
+        "licenseNumber": "DL987654321",
+        "email": "suresh.reddy@gmail.com",
+        "phone": "+919812345678",
+        "assignedBus": "AIT_B2",
+        "availabilityStatus": "Available",
+        "currentLocation": {
+            "latitude": 13.34891,
+            "longitude": 75.79456
+        }
+    },
+    {
+        "name": "Amit Sharma",
+        "licenseNumber": "DL192837465",
+        "email": "amit.sharma@gmail.com",
+        "phone": "+919823456789",
+        "assignedBus": "AIT_B3",
+        "availabilityStatus": "Available",
+        "currentLocation": {
+            "latitude": 13.34023,
+            "longitude": 75.79945
+        }
+    },
+    {
+        "name": "Karan Singh",
+        "licenseNumber": "DL112233445",
+        "email": "karan.singh@gmail.com",
+        "phone": "+919865432198",
+        "assignedBus": "AIT_B4",
+        "availabilityStatus": "Available",
+        "currentLocation": {
+            "latitude": 13.33678,
+            "longitude": 75.79567
+        }
+    },
+    {
+        "name": "Mahesh Joshi",
+        "licenseNumber": "DL667788990",
+        "email": "mahesh.joshi@gmail.com",
+        "phone": "+919887654321",
+        "assignedBus": "AIT_B5",
+        "availabilityStatus": "Available",
+        "currentLocation": {
+            "latitude": 13.34123,
+            "longitude": 75.79845
+        }
+    }
+]

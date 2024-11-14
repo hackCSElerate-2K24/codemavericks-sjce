@@ -1,0 +1,123 @@
+[
+    {
+        "name": "AIT College",
+        "coordinates": {
+            "type": "Point",
+            "coordinates": [
+                75.7982477509578,
+                13.342393143301894
+            ]
+        },
+        "address": "AIT College, Chikkamagaluru, Karnataka, 577101, India"
+    },
+    {
+        "name": "Sunil - Home",
+        "coordinates": {
+            "type": "Point",
+            "coordinates": [
+                75.79546555459845,
+                13.330958727281939
+            ]
+        },
+        "address": "Kiran Provision, Chikkamagaluru, Karnataka, 577101, India"
+    },
+    {
+        "name": "Ramesh - Home",
+        "coordinates": {
+            "type": "Point",
+            "coordinates": [
+                75.79450289032447,
+                13.327860645286922
+            ]
+        },
+        "address": "Brigade Serenity, Chikkamagaluru, Karnataka, 577101, India"
+    },
+    {
+        "name": "Priya - Home",
+        "coordinates": {
+            "type": "Point",
+            "coordinates": [
+                75.79384372408151,
+                13.32160951053555
+            ]
+        },
+        "address": "Canara Bank, Chikkamagaluru, Karnataka, 577101, India"
+    },
+    {
+        "name": "Sita - Home",
+        "coordinates": {
+            "type": "Point",
+            "coordinates": [
+                75.80043704178965,
+                13.336169976624367
+            ]
+        },
+        "address": "Naidu Kalyan Mantap, Chikkamagaluru, Karnataka, 577101, India"
+    },
+    {
+        "name": "Manoj - Home",
+        "coordinates": {
+            "type": "Point",
+            "coordinates": [
+                75.80236674627331,
+                13.336985531793065
+            ]
+        },
+        "address": "Active Fitness, Chikkamagaluru, Karnataka, 577101, India"
+    },
+    {
+        "name": "Arun - Home",
+        "coordinates": {
+            "type": "Point",
+            "coordinates": [
+                75.81376389972476,
+                13.33871409900689
+            ]
+        },
+        "address": "Hotel Prashanth, Chikkamagaluru, Karnataka, 577101, India"
+    },
+    {
+        "name": "Rohini - Home",
+        "coordinates": {
+            "type": "Point",
+            "coordinates": [
+                75.7941068,
+                13.3328437
+            ]
+        },
+        "address": "IDSG Government College, Chikkamagaluru, Karnataka, 577101, India"
+    },
+    {
+        "name": "Kavitha - Home",
+        "coordinates": {
+            "type": "Point",
+            "coordinates": [
+                75.7900358,
+                13.3310875
+            ]
+        },
+        "address": "Vishal Mega Mart, Chikkamagaluru, Karnataka, 577101, India"
+    },
+    {
+        "name": "Kumar - Home",
+        "coordinates": {
+            "type": "Point",
+            "coordinates": [
+                75.7847391,
+                13.3280649
+            ]
+        },
+        "address": "Rainbow Lodge, Chikkamagaluru, Karnataka, 577101, India"
+    },
+    {
+        "name": "Vijay - Home",
+        "coordinates": {
+            "type": "Point",
+            "coordinates": [
+                75.7912103,
+                13.3406827
+            ]
+        },
+        "address": "Ruchi Photography, Chikkamagaluru, Karnataka, 577101, India"
+    }
+]
