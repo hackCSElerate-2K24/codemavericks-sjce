@@ -2,6 +2,7 @@
 const express = require("express");
 const http = require("http");
 const { Server } = require("socket.io");
+const mongoose = require("mongoose");
 require("dotenv").config();
 
 const app = express();
@@ -13,8 +14,25 @@ const io = new Server(server, {
   },
 });
 
+// MongoDB connection
+const connectDB = async () => {
+  try {
+    const conn = await mongoose.connect(process.env.MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log(`MongoDB connected: ${conn.connection.host}`);
+  } catch (err) {
+    console.error("Error connecting to MongoDB:", err);
+    process.exit(1); // Exit the application in case of error
+  }
+};
+
+// Call MongoDB connection function
+connectDB();
+
 app.get("/", (req, res) => {
-  res.send("Server is running! Hello from Code mavericks");
+  res.send("Server is running! Hello from Code Mavericks");
 });
 
 io.on("connection", (socket) => {

@@ -1,142 +1,142 @@
 [
-    {
-        "name": "Aryan Sharma",
-        "picture": "aryan_sharma.jpg",
-        "parent": "Sunil Sharma",
-        "assignedBus": "AIT_B1",
-        "boardingStatus": "onboard"
-    },
-    {
-        "name": "Ishita Sharma",
-        "picture": "ishita_sharma.jpg",
-        "parent": "Sunil Sharma",
-        "assignedBus": "AIT_B1",
-        "boardingStatus": "onboard"
-    },
-    {
-        "name": "Anaya Verma",
-        "picture": "anaya_verma.jpg",
-        "parent": "Nita Verma",
-        "assignedBus": "AIT_B1",
-        "boardingStatus": "onboard"
-    },
-    {
-        "name": "Kabir Verma",
-        "picture": "kabir_verma.jpg",
-        "parent": "Nita Verma",
-        "assignedBus": "AIT_B1",
-        "boardingStatus": "onboard"
-    },
-    {
-        "name": "Ravi Reddy",
-        "picture": "ravi_reddy.jpg",
-        "parent": "Rajesh Reddy",
-        "assignedBus": "AIT_B1",
-        "boardingStatus": "onboard"
-    },
-    {
-        "name": "Riya Reddy",
-        "picture": "riya_reddy.jpg",
-        "parent": "Rajesh Reddy",
-        "assignedBus": "AIT_B1",
-        "boardingStatus": "onboard"
-    },
-    {
-        "name": "Vihaan Bhatia",
-        "picture": "vihaan_bhatia.jpg",
-        "parent": "Amit Bhatia",
-        "assignedBus": "AIT_B2",
-        "boardingStatus": "onboard"
-    },
-    {
-        "name": "Yash Bhatia",
-        "picture": "yash_bhatia.jpg",
-        "parent": "Amit Bhatia",
-        "assignedBus": "AIT_B2",
-        "boardingStatus": "onboard"
-    },
-    {
-        "name": "Rohan Mehta",
-        "picture": "rohan_mehta.jpg",
-        "parent": "Anjali Mehta",
-        "assignedBus": "AIT_B2",
-        "boardingStatus": "onboard"
-    },
-    {
-        "name": "Tanya Mehta",
-        "picture": "tanya_mehta.jpg",
-        "parent": "Anjali Mehta",
-        "assignedBus": "AIT_B2",
-        "boardingStatus": "onboard"
-    },
-    {
-        "name": "Maya Mehta",
-        "picture": "maya_mehta.jpg",
-        "parent": "Anjali Mehta",
-        "assignedBus": "AIT_B2",
-        "boardingStatus": "onboard"
-    },
-    {
-        "name": "Sia Patel",
-        "picture": "sia_patel.jpg",
-        "parent": "Suresh Patel",
-        "assignedBus": "AIT_B2",
-        "boardingStatus": "onboard"
-    },
-    {
-        "name": "Mahesh Patel",
-        "picture": "mahesh_patel.jpg",
-        "parent": "Suresh Patel",
-        "assignedBus": "AIT_B2",
-        "boardingStatus": "onboard"
-    },
-    {
-        "name": "Devesh Patel",
-        "picture": "devesh_patel.jpg",
-        "parent": "Suresh Patel",
-        "assignedBus": "AIT_B2",
-        "boardingStatus": "onboard"
-    },
-    {
-        "name": "Kabir Yadav",
-        "picture": "kabir_yadav.jpg",
-        "parent": "Deepa Yadav",
-        "assignedBus": "AIT_B3",
-        "boardingStatus": "onboard"
-    },
-    {
-        "name": "Ravi Yadav",
-        "picture": "ravi_yadav.jpg",
-        "parent": "Deepa Yadav",
-        "assignedBus": "AIT_B3",
-        "boardingStatus": "onboard"
-    },
-    {
-        "name": "Krishna Yadav",
-        "picture": "krishna_yadav.jpg",
-        "parent": "Deepa Yadav",
-        "assignedBus": "AIT_B3",
-        "boardingStatus": "onboard"
-    },
-    {
-        "name": "Ayaan Joshi",
-        "picture": "ayaan_joshi.jpg",
-        "parent": "Sneha Joshi",
-        "assignedBus": "AIT_B3",
-        "boardingStatus": "onboard"
-    },
-    {
-        "name": "Neha Gupta",
-        "picture": "neha_gupta.jpg",
-        "parent": "Priya Gupta",
-        "assignedBus": "AIT_B3",
-        "boardingStatus": "onboard"
-    },
-    {
-        "name": "Ravi Singh",
-        "picture": "ravi_singh.jpg",
-        "parent": "Rahul Singh",
-        "assignedBus": "AIT_B3",
-        "boardingStatus": "onboard"
-    }
+  {
+    "name": "Aryan Sharma",
+    "picture": "aryan_sharma.jpg",
+    "parent": "Sunil Sharma",
+    "assignedBus": "AIT_B1",
+    "boardingStatus": "onboard"
+  },
+  {
+    "name": "Ishita Sharma",
+    "picture": "ishita_sharma.jpg",
+    "parent": "Sunil Sharma",
+    "assignedBus": "AIT_B1",
+    "boardingStatus": "onboard"
+  },
+  {
+    "name": "Anaya Verma",
+    "picture": "anaya_verma.jpg",
+    "parent": "Nita Verma",
+    "assignedBus": "AIT_B1",
+    "boardingStatus": "onboard"
+  },
+  {
+    "name": "Kabir Verma",
+    "picture": "kabir_verma.jpg",
+    "parent": "Nita Verma",
+    "assignedBus": "AIT_B1",
+    "boardingStatus": "onboard"
+  },
+  {
+    "name": "Ravi Reddy",
+    "picture": "ravi_reddy.jpg",
+    "parent": "Rajesh Reddy",
+    "assignedBus": "AIT_B1",
+    "boardingStatus": "onboard"
+  },
+  {
+    "name": "Riya Reddy",
+    "picture": "riya_reddy.jpg",
+    "parent": "Rajesh Reddy",
+    "assignedBus": "AIT_B1",
+    "boardingStatus": "onboard"
+  },
+  {
+    "name": "Vihaan Bhatia",
+    "picture": "vihaan_bhatia.jpg",
+    "parent": "Amit Bhatia",
+    "assignedBus": "AIT_B2",
+    "boardingStatus": "onboard"
+  },
+  {
+    "name": "Yash Bhatia",
+    "picture": "yash_bhatia.jpg",
+    "parent": "Amit Bhatia",
+    "assignedBus": "AIT_B2",
+    "boardingStatus": "onboard"
+  },
+  {
+    "name": "Rohan Mehta",
+    "picture": "rohan_mehta.jpg",
+    "parent": "Anjali Mehta",
+    "assignedBus": "AIT_B2",
+    "boardingStatus": "onboard"
+  },
+  {
+    "name": "Tanya Mehta",
+    "picture": "tanya_mehta.jpg",
+    "parent": "Anjali Mehta",
+    "assignedBus": "AIT_B2",
+    "boardingStatus": "onboard"
+  },
+  {
+    "name": "Maya Mehta",
+    "picture": "maya_mehta.jpg",
+    "parent": "Anjali Mehta",
+    "assignedBus": "AIT_B2",
+    "boardingStatus": "onboard"
+  },
+  {
+    "name": "Sia Patel",
+    "picture": "sia_patel.jpg",
+    "parent": "Suresh Patel",
+    "assignedBus": "AIT_B2",
+    "boardingStatus": "onboard"
+  },
+  {
+    "name": "Mahesh Patel",
+    "picture": "mahesh_patel.jpg",
+    "parent": "Suresh Patel",
+    "assignedBus": "AIT_B2",
+    "boardingStatus": "onboard"
+  },
+  {
+    "name": "Devesh Patel",
+    "picture": "devesh_patel.jpg",
+    "parent": "Suresh Patel",
+    "assignedBus": "AIT_B2",
+    "boardingStatus": "onboard"
+  },
+  {
+    "name": "Kabir Yadav",
+    "picture": "kabir_yadav.jpg",
+    "parent": "Deepa Yadav",
+    "assignedBus": "AIT_B3",
+    "boardingStatus": "onboard"
+  },
+  {
+    "name": "Ravi Yadav",
+    "picture": "ravi_yadav.jpg",
+    "parent": "Deepa Yadav",
+    "assignedBus": "AIT_B3",
+    "boardingStatus": "onboard"
+  },
+  {
+    "name": "Krishna Yadav",
+    "picture": "krishna_yadav.jpg",
+    "parent": "Deepa Yadav",
+    "assignedBus": "AIT_B3",
+    "boardingStatus": "onboard"
+  },
+  {
+    "name": "Ayaan Joshi",
+    "picture": "ayaan_joshi.jpg",
+    "parent": "Sneha Joshi",
+    "assignedBus": "AIT_B3",
+    "boardingStatus": "onboard"
+  },
+  {
+    "name": "Neha Gupta",
+    "picture": "neha_gupta.jpg",
+    "parent": "Priya Gupta",
+    "assignedBus": "AIT_B3",
+    "boardingStatus": "onboard"
+  },
+  {
+    "name": "Ravi Singh",
+    "picture": "ravi_singh.jpg",
+    "parent": "Rahul Singh",
+    "assignedBus": "AIT_B3",
+    "boardingStatus": "onboard"
+  }
 ]

@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
+
 const Admin = require("../models/admin");
 const Bus = require("../models/bus");
 const Driver = require("../models/driver");
@@ -15,6 +17,18 @@ const parentsData = require("./parent.json");
 const studentsData = require("./student.json");
 const { mongodburi } = require("./env");
 
+// Utility function to hash passwords in data
+const hashPasswords = async (data) => {
+  return Promise.all(
+    data.map(async (item) => {
+      if (item.password) {
+        item.password = await bcrypt.hash(item.password, 10);
+      }
+      return item;
+    })
+  );
+};
+
 // Seeder function to populate data
 const seedData = async () => {
   try {
@@ -22,92 +36,97 @@ const seedData = async () => {
     await mongoose.connect(mongodburi);
     console.log("Connected to MongoDB");
 
-    // Clear existing collections (if needed)
-    await mongoose.connection?.db.dropDatabase();
+    // Delete existing data in collections before seeding
+    await Admin.deleteMany({});
+    await Bus.deleteMany({});
+    await Driver.deleteMany({});
+    await Location.deleteMany({});
+    await Parent.deleteMany({});
+    await Student.deleteMany({});
+    console.log("Old data deleted successfully.");
 
-    // Insert locations
+    // Seed Location Data
     const locations = await Location.insertMany(locationsData);
+    console.log("Locations seeded");
 
-    // Insert admins and link them to the correct location based on the college name
+    // Hash passwords in Admin, Driver, and Parent data
+    const hashedAdminsData = await hashPasswords(adminsData);
+    const hashedDriversData = await hashPasswords(driversData);
+    const hashedParentsData = await hashPasswords(parentsData);
+
+    // Seed Admin Data & Map location based on name
     const admins = await Admin.insertMany(
-      adminsData.map((admin) => {
-        const location = locations.find((loc) => loc.name === admin.college);
+      hashedAdminsData.map((admin) => {
+        const location = locations.find((loc) => loc.name === admin.location);
         if (!location) {
-          throw new Error(`Location for college "${admin.college}" not found`);
+          throw new Error(`Location for college "${admin.location}" not found`);
         }
-        return {
-          ...admin,
-          location: location._id, // Link the correct location
-        };
+        return { ...admin, location: location._id };
       })
     );
+    console.log("Admins seeded");
 
-    // Insert drivers
-    const drivers = await Driver.insertMany(driversData);
+    // Seed Driver Data
+    const drivers = await Driver.insertMany(hashedDriversData);
+    console.log("Drivers seeded");
 
-    // Insert buses and link each bus to the correct driver
+    // Seed Bus Data & Map driver assigned to the bus
     const buses = await Bus.insertMany(
       busesData.map((bus) => {
-        const driver = drivers.find((driver) => driver.name === bus.driverName);
+        const driver = drivers.find((driver) => driver.name === bus.driverId);
         if (!driver) {
-          throw new Error(`Driver with name "${bus.driverName}" not found`);
+          throw new Error(`Driver with name "${bus.driver}" not found`);
         }
-        return {
-          ...bus,
-          driverId: driver._id, // Link to the correct driver
-        };
+        return { ...bus, driverId: driver._id };
       })
     );
+    console.log("Buses seeded");
 
-    // Insert parents and link them to the correct location
-    const parents = await Parent.insertMany(
-      parentsData.map((parent) => {
-        const location = locations.find(
-          (loc) => loc.name === parent.locationName
-        );
-        if (!location) {
-          throw new Error(`Location for parent "${parent.name}" not found`);
-        }
-        return {
-          ...parent,
-          location: location._id, // Link the correct location
-        };
-      })
-    );
-
-    // Insert students and link them to the correct parent and bus
+    // Seed Student Data & Map assignedBus
     const students = await Student.insertMany(
       studentsData.map((student) => {
-        const parent = parents.find((p) => p.name === student.parentName);
-        if (!parent) {
-          throw new Error(`Parent with name "${student.parentName}" not found`);
-        }
-        const bus = buses.find(
-          (b) => b.busNumberPlate === student.busNumberPlate
-        );
+        const bus = buses.find((bus) => bus.routeNo === student.assignedBus);
         if (!bus) {
           throw new Error(
             `Bus with number plate "${student.busNumberPlate}" not found`
           );
         }
+        return { ...student, assignedBus: bus._id };
+      })
+    );
+    console.log("Students seeded");
+
+    // Remap students with parent references for parent-child relationships
+    const studentsRemapped = studentsData.map((student) => ({
+      ...student,
+      parent: studentsData.find((s) => s.name === student.name).parent,
+    }));
+
+    // Seed Parent Data & Map children
+    const parents = await Parent.insertMany(
+      hashedParentsData.map((parent) => {
+        const childrenData = studentsRemapped.filter(
+          (student) => student.parent === parent.name
+        );
+        const children = childrenData.map((child) =>
+          students.find((student) => student.name === child.name)
+        );
+
+        const location = locations.find((loc) => loc.name === parent.location);
+        if (!location) {
+          throw new Error(`Location for parent "${parent.name}" not found`);
+        }
+
         return {
-          ...student,
-          parent: parent._id, // Link to the correct parent
-          assignedBus: bus._id, // Link to the correct bus
+          ...parent,
+          location: location._id,
+          children: children.map((child) => child._id),
         };
       })
     );
+    console.log("Parents seeded");
 
-    console.log("Seeding completed successfully!");
-
-    // Optional: update driver assignments
-    for (let i = 0; i < drivers.length; i++) {
-      const assignedBus = buses[i];
-      drivers[i].assignedBus = assignedBus._id;
-      await drivers[i].save();
-    }
-
-    console.log("Driver assignments updated successfully!");
+    mongoose.connection.close();
   } catch (err) {
     console.error("Error seeding data:", err);
   }

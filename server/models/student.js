@@ -9,11 +9,6 @@ const studentSchema = new mongoose.Schema({
     type: String,
     required: [true, "Student must have a picture"],
   },
-  parent: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Parent",
-    required: [true, "Parent is required"],
-  },
   assignedBus: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Bus",
