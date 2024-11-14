@@ -23,6 +23,9 @@ export const AuthProvider = ({ children }) => {
           email,
           password,
           role: roleSelected,
+        },
+        {
+          withCredentials: true,
         }
       );
 

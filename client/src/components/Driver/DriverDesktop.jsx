@@ -1,7 +1,7 @@
 import MapComponent from "../MapComponent";
 import { IoMdCheckmarkCircle } from "react-icons/io";
 
-function DriverDesktop() {
+export default function DriverDesktop() {
   return (
     <div className="min-h-screen bg-black">
       <div className="flex justify-between p-2">
@@ -150,4 +150,3 @@ function DriverDesktop() {
   );
 }
 
-export default DriverDesktop;
