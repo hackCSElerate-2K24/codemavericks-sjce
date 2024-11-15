@@ -1,7 +1,42 @@
 import MapComponent from "../MapComponent";
+import { useAuth } from "../../context/auth";
 import { IoMdCheckmarkCircle } from "react-icons/io";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function DriverDesktop() {
+  const { user } = useAuth();
+  const [routeData, setRouteData] = useState();
+  const [loading, setLoading] = useState(true);
+
+  console.log(user);
+  useEffect(() => {
+    // Fetch student data based on the user
+    const fetchDriver = async () => {
+      try {
+        setLoading(true);
+        const { data: busdata } = await axios.get(
+          `${import.meta.env.VITE_APP_BACKEND_URL}/api/v1/getData/bus`
+        );
+
+        const busassigned = busdata.find(
+          (bus) => bus.driverId._id === user._id
+        );
+
+        const { data } = await axios.get(
+          `${import.meta.env.VITE_APP_BACKEND_URL}/api/v1/getData/busRoute`
+        );
+        const busRoute = data.find((route) => route.name === busassigned.name);
+        setRouteData(busRoute);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching student or bus data", error);
+      }
+    };
+
+    fetchDriver();
+  }, [user]);
+
   return (
     <div className="min-h-screen bg-black">
       <div className="flex justify-between p-2">
@@ -18,7 +53,17 @@ export default function DriverDesktop() {
       <div className="flex  w-full   text-white">
         {/* Left Side (Map and Information) */}
         <div className="w-[72%] p-2 flex flex-col space-y-2">
-          <MapComponent />
+          {loading ? (
+            <div>Loading...</div>
+          ) : (
+            <MapComponent
+              routeData={routeData}
+              waypoints={routeData.stops.map((stop) => ({
+                lat: stop.coordinates.coordinates[1],
+                lng: stop.coordinates.coordinates[0],
+              }))}
+            />
+          )}
           {/* Bottom Info Section */}
           <div className="flex items-center justify-between h-fit rounded-md">
             <div className="p-4">
@@ -149,4 +194,3 @@ export default function DriverDesktop() {
     </div>
   );
 }
-

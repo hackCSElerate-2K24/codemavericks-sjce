@@ -1,11 +1,53 @@
 import MapComponent from "../MapComponent";
+import { useAuth } from "../../context/auth";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 function Parent() {
+  const { user } = useAuth();
+  const [routeData, setRouteData] = useState();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Fetch student data based on the user
+    const fetchStudentData = async () => {
+      try {
+        setLoading(true);
+        const { data: studentdata } = await axios.get(
+          `${import.meta.env.VITE_APP_BACKEND_URL}/api/v1/getData/student/${
+            user.children[0]
+          }`
+        );
+        const { assignedBus } = studentdata;
+        const { data } = await axios.get(
+          `${import.meta.env.VITE_APP_BACKEND_URL}/api/v1/getData/busRoute`
+        );
+        const busRoute = data.find((route) => route.name === assignedBus.name);
+        setRouteData(busRoute);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching student or bus data", error);
+      }
+    };
+
+    fetchStudentData();
+  }, [user]);
+
   return (
     <div className=" flex flex-col bg-[#141414] text-white relative">
       {/* Map Component (70% Height) */}
       <div className="h-[70%] relative z-0">
-        <MapComponent />
+        {loading ? (
+          <div>Loading...</div>
+        ) : (
+          <MapComponent
+            routeData={routeData}
+            waypoints={routeData.stops.map((stop) => ({
+              lat: stop.coordinates.coordinates[1],
+              lng: stop.coordinates.coordinates[0],
+            }))}
+          />
+        )}
       </div>
 
       {/* Speed and Driver Information */}
@@ -16,7 +58,10 @@ function Parent() {
         </div>
 
         <div className="flex items-center gap-4 bg-[#1C1C1E] rounded-lg p-4 shadow-lg transition-all transform hover:scale-105 w-fit">
-          <img src="/Driver/driver.png" className="h-12 w-12 rounded-full border-2 border-gray-600" />
+          <img
+            src="/Driver/driver.png"
+            className="h-12 w-12 rounded-full border-2 border-gray-600"
+          />
           <div className="flex flex-col text-sm">
             <h1 className="font-semibold text-lg">Changappa</h1>
             <p className="text-xs text-gray-400">KA 09 MD 2619</p>
