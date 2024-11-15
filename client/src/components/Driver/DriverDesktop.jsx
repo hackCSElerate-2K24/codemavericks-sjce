@@ -7,9 +7,9 @@ import axios from "axios";
 export default function DriverDesktop() {
   const { user } = useAuth();
   const [routeData, setRouteData] = useState();
+  const [student, setStudent] = useState();
   const [loading, setLoading] = useState(true);
 
-  console.log(user);
   useEffect(() => {
     // Fetch student data based on the user
     const fetchDriver = async () => {
@@ -27,6 +27,19 @@ export default function DriverDesktop() {
           `${import.meta.env.VITE_APP_BACKEND_URL}/api/v1/getData/busRoute`
         );
         const busRoute = data.find((route) => route.name === busassigned.name);
+        const { data: studentdata } = await axios.get(
+          `${import.meta.env.VITE_APP_BACKEND_URL}/api/v1/getData/student`
+        );
+        setStudent(
+          studentdata.filter(
+            (student) => student.assignedBus._id === busassigned._id
+          )
+        );
+        console.log(
+          studentdata.filter(
+            (student) => student.assignedBus._id === busassigned._id
+          )
+        );
         setRouteData(busRoute);
         setLoading(false);
       } catch (error) {
@@ -153,7 +166,7 @@ export default function DriverDesktop() {
           {/* Upcoming Stops */}
           <div className="bg-[#141414] p-3 rounded-md space-y-2 max-h-96 overflow-y-auto scrollbar-custom">
             <h2 className="text-xl font-bold tracking-wide">Upcoming Stops</h2>
-            {[...Array(5)].map((_, i) => (
+            {student?.map((stud, i) => (
               <div
                 key={i}
                 className="flex items-center justify-around bg-[#202020] p-2 rounded-md mb-2"
@@ -165,7 +178,7 @@ export default function DriverDesktop() {
                 />
                 <div className="ml-2">
                   <h3 className="font-semibold tracking-wide text-gray-50">
-                    Vasudev Shetty
+                    {stud.name}
                   </h3>
                   <p className="text-xs text-gray-300">Ayyarahalli 571311</p>
                 </div>
