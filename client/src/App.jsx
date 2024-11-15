@@ -32,7 +32,11 @@ function App() {
             path="/driver"
             element={
               <ProtectedRoute allowedRoles={["Driver"]}>
-                {isDesktop ? <DriverDesktop /> : <DriverMobile />}
+                {isDesktop ? (
+                  <DriverDesktop />
+                ) : (
+                  <h1>Only on desktop please</h1>
+                )}
               </ProtectedRoute>
             }
           />
@@ -40,7 +44,7 @@ function App() {
             path="/parent"
             element={
               <ProtectedRoute allowedRoles={["Parent"]}>
-                {isDesktop ? <Parent /> : <h1>Only on Desktop please</h1>}
+                {!isDesktop ? <Parent /> : <h1>Only on Desktop please</h1>}
               </ProtectedRoute>
             }
           />

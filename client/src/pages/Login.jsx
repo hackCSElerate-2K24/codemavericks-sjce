@@ -94,7 +94,7 @@ function Login() {
 
           <button
             type="submit"
-            className="w-32 ml-auto py-2 font-bold text-white bg-[#d32f2f] rounded-lg"
+            className="w-32 ml-auto py-2 font-bold text-white bg-[#d32f2f] rounded-lg flex items-center justify-center"
             disabled={loading}
           >
             {loading ? (
