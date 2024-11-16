@@ -1,6 +1,10 @@
+import { useEffect, useState } from "react";
+import io from "socket.io-client";
 import MapComponent from "../MapComponent";
 
-// Bus data array
+// Initialize Socket connection
+const socket = io();
+
 const busData = [
   { id: 1, plate: "KA 06 M 4568", driver: "Channapa K", speed: 45 },
   { id: 2, plate: "KA 06 M 1234", driver: "Arjun N", speed: 75 },
@@ -21,11 +25,32 @@ const busData = [
 ];
 
 function Admin() {
+  const [videoBlobUrl, setVideoBlobUrl] = useState(null);
+  const [chunks, setChunks] = useState([]);
+
+  useEffect(() => {
+    socket.on("adminStream", (data) => {
+      setChunks((prevChunks) => [...prevChunks, data]);
+    });
+
+    return () => {
+      socket.off("adminStream");
+    };
+  }, []);
+
+  useEffect(() => {
+    if (chunks.length > 0) {
+      const blob = new Blob(chunks, { type: "video/webm" });
+      const url = URL.createObjectURL(blob);
+      setVideoBlobUrl(url);
+    }
+  }, [chunks]);
+
   return (
     <div className="bg-black min-h-screen text-white p-4">
       {/* Header */}
       <div className="flex justify-between items-center mb-4">
-        <h1 className="text-xl font-bold">TrackIn Dash Board (driver)</h1>
+        <h1 className="text-xl font-bold">TrackIn Dashboard (Driver)</h1>
         <button className="flex items-center bg-[#2F2E41] py-2 px-4 rounded-xl">
           <span>Admin</span>
         </button>
@@ -34,7 +59,7 @@ function Admin() {
       {/* Main Content */}
       <div className="flex space-x-4">
         {/* Left Sidebar: Buses List */}
-        <div className="w-[28%] bg-[#141414] p-4 rounded-md space-y-3 overflow-y-auto  h-[98vh] scrollbar-custom">
+        <div className="w-[28%] bg-[#141414] p-4 rounded-md space-y-3 overflow-y-auto h-[98vh] scrollbar-custom">
           <h2 className="text-lg font-bold mb-2">Buses</h2>
           {busData.map((bus, index) => {
             const speedColor =
@@ -88,9 +113,10 @@ function Admin() {
             <div className="w-[70%] h-full bg-[#2F2E41] rounded-md overflow-hidden">
               <MapComponent />
             </div>
+
             {/* Driver Info Section */}
             <div className="flex flex-col justify-around px-1">
-              <div className="w-] bg-[#141414] p-4 rounded-md flex flex-col h-fit text-center space-y-2">
+              <div className="bg-[#141414] p-4 rounded-md flex flex-col h-fit text-center space-y-2">
                 <div className="flex gap-4">
                   <img
                     src="/Driver/driver.png"
@@ -110,23 +136,35 @@ function Admin() {
                   <p className="text-xs">Phone: 96312487951</p>
                   <p className="text-xs">Email: driver@gmail.com</p>
                   <p className="text-xs">
-                    Address: #123, JP nagar, Mysuru, 57006
+                    Address: #123, JP Nagar, Mysuru, 57006
                   </p>
                 </div>
-              </div>{" "}
+              </div>
+
+              {/* Camera Section */}
               <div className="flex space-x-4">
                 <div className="w-full bg-[#2F2E41] p-4 rounded-md h-40 flex items-center justify-center">
-                  Camera
+                  {videoBlobUrl ? (
+                    <video
+                      controls
+                      autoplay
+                      src={videoBlobUrl}
+                      className="h-full w-full object-cover rounded-md"
+                    />
+                  ) : (
+                    <p className="text-gray-400">Camera is loading...</p>
+                  )}
                 </div>
               </div>
             </div>
           </div>
 
+          {/* Seats and Stats */}
           <div className="flex">
-            <div className="flex-1 flex gap-12 justify-between bg-[#141414] p-4 rounded-3xl ">
-              <div className="px-2 ">
+            <div className="flex-1 flex gap-12 justify-between bg-[#141414] p-4 rounded-3xl">
+              <div className="px-2">
                 <div className="flex flex-col justify-around items-center gap-16 p-2">
-                  <img src="/Driver/staring.png" className="h-12 w-16 " />
+                  <img src="/Driver/staring.png" className="h-12 w-16" />
                   <p className="text-yellow-600">Door</p>
                 </div>
               </div>
@@ -147,22 +185,20 @@ function Admin() {
                 ))}
               </div>
             </div>
+
+            {/* Stats Section */}
             <div className="flex flex-col w-54 gap-4 p-2">
-              <div className="rounded-xl p-2 bg-[#141414]">
-                <p className="flex flex-col gap-1 items-center justify-center">
-                  <span className="text-lg font-semibold">Total students</span>
-                  <span className="text-[#35E856] text-2xl font-extrabold">
-                    50
-                  </span>
-                </p>
+              <div className="bg-[#141414] rounded-lg py-8 px-6">
+                <h3 className="text-xs font-semibold">Speed Limit</h3>
+                <p className="text-2xl font-bold">60 KMPH</p>
               </div>
-              <div className="rounded-xl p-2 bg-[#141414]">
-                <p className="flex flex-col gap-1 items-center justify-center">
-                  <span className="text-lg font-semibold">Total stops</span>
-                  <span className="text-[#FFD700] text-2xl font-extrabold">
-                    10
-                  </span>
-                </p>
+              <div className="bg-[#141414] rounded-lg py-8 px-6">
+                <h3 className="text-xs font-semibold">Total Seats</h3>
+                <p className="text-2xl font-bold">50</p>
+              </div>
+              <div className="bg-[#141414] rounded-lg py-8 px-6">
+                <h3 className="text-xs font-semibold">Max Speed</h3>
+                <p className="text-2xl font-bold">120 KMPH</p>
               </div>
             </div>
           </div>

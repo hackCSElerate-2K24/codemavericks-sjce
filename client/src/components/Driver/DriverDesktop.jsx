@@ -1,7 +1,30 @@
 import MapComponent from "../MapComponent";
 import { IoMdCheckmarkCircle } from "react-icons/io";
+import { useEffect } from "react";
+import io from "socket.io-client"; // Assuming you have socket.io-client installed
 
 export default function DriverDesktop() {
+  useEffect(() => {
+    // Function to start the camera and stream video
+    function startCamera() {
+      navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+        .then(stream => {
+          // Do not display the video element, just send the stream to the server
+          const socket = io(); // Connect to the socket server
+
+          // Send the stream to the server using WebSocket
+          const mediaRecorder = new MediaRecorder(stream);
+          mediaRecorder.ondataavailable = (e) => {
+            socket.emit('driverStream', e.data); // Send data to the server
+          };
+          mediaRecorder.start(10);  // Send data in chunks every 100ms
+        })
+        .catch(err => console.error('Error accessing camera:', err));
+    }
+
+    startCamera(); // Start the camera when the component mounts
+  }, []);
+
   return (
     <div className="min-h-screen bg-black">
       <div className="flex justify-between p-2">
@@ -10,12 +33,12 @@ export default function DriverDesktop() {
         </h1>
         <div className="flex items-center justify-center">
           <button className="flex bg-[#2F2E41] py-2 px-6 items-center justify-center gap-2 font-medium text-white rounded-xl">
-            My profile <img src="/Driver/driver.png" />
+            My profile <img src="/Driver/driver.png" alt="Driver profile" />
           </button>
         </div>
       </div>
 
-      <div className="flex  w-full   text-white">
+      <div className="flex w-full text-white">
         {/* Left Side (Map and Information) */}
         <div className="w-[72%] p-2 flex flex-col space-y-2">
           <MapComponent />
@@ -35,7 +58,7 @@ export default function DriverDesktop() {
                 </div>
                 <div className="rounded-xl p-2 bg-[#141414]">
                   <p className="flex flex-col gap-1 items-center justify-center">
-                    <span className="text-lg px-4  font-semibold">
+                    <span className="text-lg px-4 font-semibold">
                       Total students
                     </span>
                     <span className="text-[#FFD700] text-2xl font-extrabold">
@@ -48,9 +71,9 @@ export default function DriverDesktop() {
 
             {/* Starting and Door Divs */}
             <div className="flex-1 flex gap-12 justify-between bg-[#141414] p-4 rounded-3xl ">
-              <div className="px-2 ">
+              <div className="px-2">
                 <div className="flex flex-col justify-around items-center gap-16 p-2">
-                  <img src="/Driver/staring.png" className="h-12 w-16 " />
+                  <img src="/Driver/staring.png" className="h-12 w-16" alt="Steering wheel" />
                   <p className="text-yellow-600">Door</p>
                 </div>
               </div>
@@ -80,7 +103,7 @@ export default function DriverDesktop() {
           <div className="bg-[#141414] p-3 rounded-md">
             <div className="flex justify-around">
               <div className="flex gap-4">
-                <img src="/Driver/zoom.png" className="h-12 w-12" />
+                <img src="/Driver/zoom.png" className="h-12 w-12" alt="Zoom" />
               </div>
               <div className="flex flex-col items-center justify-center gap-1">
                 <h1 className="text-3xl font-bold text-[#35E856]">24 min</h1>
@@ -93,11 +116,9 @@ export default function DriverDesktop() {
             </div>
 
             <div className="flex p-2 gap-20 items-center bg-[#202020] rounded-xl my-4">
-              <img src="/Driver/profile.png" />
+              <img src="/Driver/profile.png" alt="Driver profile" />
               <p className="flex flex-col">
-                <span className="font-bold tracking-wider text-lg">
-                  THEJAS C
-                </span>
+                <span className="font-bold tracking-wider text-lg">THEJAS C</span>
                 <span className="text-sm tracking-wide text-gray-100">
                   Address 57144
                 </span>
@@ -149,4 +170,3 @@ export default function DriverDesktop() {
     </div>
   );
 }
-
